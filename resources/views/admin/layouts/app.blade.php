@@ -23,12 +23,13 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.partials.nav')
+        @include('admin.layouts.partials.nav')
 
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://use.fontawesome.com/cfecd30e52.js"></script>
 </body>
 </html>
