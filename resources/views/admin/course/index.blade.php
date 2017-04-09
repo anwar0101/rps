@@ -9,14 +9,14 @@
                         {{  $error }}
                     @endforeach
                     <div class="media-body">
-                        <h2 class="media-heading text-success"> All Students </h2>
+                        <h2 class="media-heading text-success"> All Courses </h2>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <form class="" action="" method="post">
                         {{ csrf_field() }}
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search_employee" placeholder="Search Students.....">
+                            <input type="text" class="form-control" name="search_course" placeholder="Search Course.....">
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="submit"> <i class="fa fa-search fa-lg"></i> </button>
                             </span>
@@ -25,9 +25,9 @@
                 </div>
                 <div class="col-md-3">
                     <div class="text-right">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addStudent"> <i class="fa fa-plus"></i> Add Student </button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCourse"> <i class="fa fa-plus"></i> Add Course </button>
                     </div>
-                    @include('admin.layouts.partials.addstudentmodal')
+                    @include('admin.layouts.partials.addcoursemodal')
                 </div>
             </div>
         </div>
@@ -36,23 +36,20 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <th> ID </th>
-                    <th> REG </th>
+                    <th> CODE </th>
                     <th> Name </th>
-                    <th> Contact </th>
-                    <th> View </th>
-                    <th> Edit </th>
-                    <th> Delete </th>
+                    <th> Credit </th>
 
                 </thead>
-                @foreach ($students as $student)
+                @foreach ($courses as $course)
                     <tbody>
                         <tr>
-                            <td> {{ $student->id }}</td>
-                            <td> {{ $student->reg }}</td>
-                            <td> {{ $student->name }}</td>
-                            <td> {{ $student->contact }}</td>
+                            <td> {{ $course->id }}</td>
+                            <td> {{ $course->code }}</td>
+                            <td> {{ $course->name }}</td>
+                            <td> {{ $course->credit }}</td>
 
-                            <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewEmployeeModal" href="#"> <i class="fa fa-eye fa-lg"></i> </button> </td>
+                            <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#view" href="#"> <i class="fa fa-eye fa-lg"></i> </button> </td>
                             {{-- @include('includes.view-employee-modal', ['employee'=>$employee]) --}}
                             <td> <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateEmployeeModal">
                                 <i class="fa fa-edit fa-lg"></i>

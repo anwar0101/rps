@@ -24,8 +24,22 @@
 <body>
     <div id="app">
         @include('admin.layouts.partials.nav')
+        <section id="dash">
+            <div class="container">
+                <div class="row">
+                    <!-- left navigation code start -->
+                    <div class="col-md-3">
+                        @include('admin.layouts.partials.left-sidebar')
+                    </div> <!-- left navigation code end -->
 
-        @yield('content')
+                    <!-- body section code start -->
+                    <div class="col-md-9">
+                        @yield('dash')
+                    </div>
+                    <!-- body section code end -->
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Scripts -->

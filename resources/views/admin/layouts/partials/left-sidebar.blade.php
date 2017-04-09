@@ -11,8 +11,8 @@
             <div class="panel-body">
                 <div class="list-group">
                     <a href="{{ route('students.index') }}" class="list-group-item list-group-item-success"> <i class="fa fa-users fa-lg"></i> Student </a>
-                    <a href="" class="list-group-item list-group-item-success"> <i class="fa fa-users fa-lg"></i> Course </a>
-                    <a href="" class="list-group-item list-group-item-success"> <i class="fa fa-users fa-lg"></i> Department </a>
+                    <a href="{{ route('courses.index') }}" class="list-group-item list-group-item-success"> <i class="fa fa-users fa-lg"></i> Course </a>
+                    <a href="{{ route('departments.index') }}" class="list-group-item list-group-item-success"> <i class="fa fa-users fa-lg"></i> Department </a>
                 </div>
             </div>
         </div>
