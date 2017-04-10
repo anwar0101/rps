@@ -25,9 +25,8 @@
                 </div>
                 <div class="col-md-3">
                     <div class="text-right">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#adddepartment"> <i class="fa fa-plus"></i> Add Department </button>
+                        <a href="{{ route('departments.create') }}" class="btn btn-success"> <i class="fa fa-plus"></i> Add Department </a>
                     </div>
-                    @include('admin.layouts.partials.adddepartmentmodal')
                 </div>
             </div>
         </div>
@@ -37,6 +36,7 @@
                 <thead>
                     <th> ID </th>
                     <th> Name </th>
+                    <th> Programe </th>
                     <th> View </th>
                     <th> Edit </th>
                     <th> Delete </th>
@@ -46,6 +46,7 @@
                         <tr>
                             <td> {{ $department->id }}</td>
                             <td> {{ $department->name }}</td>
+                            <td> {{ $department->programe }}</td>
 
                             <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#view" href="#"> <i class="fa fa-eye fa-lg"></i> </button> </td>
                             {{-- @include('includes.view-employee-modal', ['employee'=>$employee]) --}}

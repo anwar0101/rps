@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Department;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -25,7 +26,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $departments = Department::all();
+        return view('admin.course.create',['departments'=>$departments]);
     }
 
     /**
@@ -36,7 +38,32 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'=> 'required',
+            'code'=> 'required',
+            'credit'=> 'required',
+            'department'=> 'required',
+            'semester'=> 'required',
+        ]);
+
+        $department = Department::find($request->department);
+
+        //create Course class object
+        $course = new Course();
+        //store upcomming data into variable
+        $course->name = $request->name;
+        $course->code = $request->code;
+        $course->credit = $request->credit;
+        $course->semester = $request->semester;
+        //save course object to Database
+        $department->courses()->save($course);
+
+        if(isset($request->submit) && $request->submit == "continue"){
+            return back();
+        } else {
+            return redirect('/courses');
+        }
+
     }
 
     /**

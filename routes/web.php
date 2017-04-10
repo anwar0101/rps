@@ -25,3 +25,4 @@ Route::get('/admin', function() {
 Route::resource('students', 'StudentController');
 Route::resource('courses', 'CourseController');
 Route::resource('departments', 'DepartmentController');
+Route::resource('results', 'ResultEntryController');

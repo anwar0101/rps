@@ -25,9 +25,8 @@
                 </div>
                 <div class="col-md-3">
                     <div class="text-right">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCourse"> <i class="fa fa-plus"></i> Add Course </button>
+                        <a href="{{ route('courses.create') }}" class="btn btn-success"> <i class="fa fa-plus"></i> Add Course </a>
                     </div>
-                    @include('admin.layouts.partials.addcoursemodal')
                 </div>
             </div>
         </div>

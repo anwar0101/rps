@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -25,7 +27,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $departments = Department::all();
+        return view('admin.student.create', ['departments'=>$departments]);
     }
 
     /**
@@ -38,6 +41,7 @@ class StudentController extends Controller
     {
         // validate the students up comming data
         $this->validate($request, [
+            'reg'=> 'required',
             'name'=> 'required',
             'father_name'=> 'required',
             'mother_name'=> 'required',
@@ -45,11 +49,17 @@ class StudentController extends Controller
             'permanent_address'=> 'required',
             'picture'=> 'required',
             'contact'=> 'required',
+            'department'=> 'required',
+            'dob'=> 'required',
+            'semester'=> 'required',
         ]);
         // validate up-comming
         if ($request->hasFile('picture')) {
             $imgStore = Storage::putFile('public/students', $request->file('picture'));
         }
+
+        $department = Department::find($request->department);
+
         // create student class object
         $student = new Student();
         // store upcomming data into variable
@@ -60,10 +70,19 @@ class StudentController extends Controller
         $student->present_address = $request->present_address;
         $student->permanent_address = $request->permanent_address;
         $student->contact = $request->contact;
+        $student->dob = $request->dob;
+        $student->semester = $request->semester;
+
         $student->picture = ($request->hasFile('picture')) ? $imgStore: "";
         // store data into the Database
-        $student->save();
-        return redirect('/students');
+        $department->students()->save($student);
+
+        if(isset($request->submit) && $request->submit == "continue") {
+            return back();
+        } else {
+            return redirect('/students');
+        }
+
     }
 
     /**

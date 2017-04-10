@@ -25,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.department.create');
     }
 
     /**
@@ -36,7 +36,29 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate upcomming data
+        $this->validate($request, [
+            'code'=> 'required',
+            'name'=> 'required',
+            'programe'=> 'required',
+        ]);
+
+        //create Department class object
+        $department = new Department();
+        //store upcoomming data into variable
+        $department->code = $request->code;
+        $department->name = $request->name;
+        $department->programe = $request->programe;
+
+        //save department object into Database
+        $department->save();
+
+        //check is request for save and continue
+        if(isset($request->submit) && $request->submit == "continue"){
+            return back();
+        } else {
+            return redirect('/departments');
+        }
     }
 
     /**

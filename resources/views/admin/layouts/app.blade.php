@@ -14,6 +14,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -25,7 +27,7 @@
     <div id="app">
         @include('admin.layouts.partials.nav')
         <section id="dash">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <!-- left navigation code start -->
                     <div class="col-md-3">
