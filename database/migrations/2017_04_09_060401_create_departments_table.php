@@ -17,7 +17,7 @@ class CreateDepartmentsTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('code')->unique();
             $table->string('name')->unique();
-            $table->string('programe')->unique();
+            $table->string('programe');
             $table->timestamps();
         });
     }
